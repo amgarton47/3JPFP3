@@ -14,7 +14,7 @@ const { MemoryRouter } = rrd;
 const middlewares = [thunkMiddleware];
 const mockStore = configureMockStore(middlewares);
 const initialState = {
-  campuses: []
+  campuses: [],
 };
 
 import mockAxios from "../mock-axios";
@@ -37,7 +37,7 @@ const seed = require("../../seed");
 // UnconnectedAllCampuses is a named export from that module, and it is NOT connected
 // to Redux. We're testing BOTH of these components in here.
 import AllCampuses, {
-  AllCampuses as UnconnectedAllCampuses
+  AllCampuses as UnconnectedAllCampuses,
 } from "../../app/components/AllCampuses";
 import AllStudents from "../../app/components/AllStudents";
 import Routes from "../../app/components/Routes";
@@ -48,13 +48,13 @@ describe("Tier One: Campuses", () => {
     {
       id: 1,
       name: "Mars Academy",
-      imageUrl: "/images/mars.png"
+      imageUrl: "/images/mars.png",
     },
     {
       id: 2,
       name: "Jupiter Jumpstart",
-      imageUrl: "/images/jupiter.jpeg"
-    }
+      imageUrl: "/images/jupiter.jpeg",
+    },
   ];
   beforeEach(() => {
     // mockAxios ensures that when our client-side code requests data from the
@@ -81,10 +81,10 @@ describe("Tier One: Campuses", () => {
       expect(wrapper.text()).to.include("Jupiter Jumpstart");
       // The test is expecting an image for each campus, with src set to the
       // campus's imageUrl
-      const images = wrapper.find("img").map(node => node.get(0).props.src);
+      const images = wrapper.find("img").map((node) => node.get(0).props.src);
       expect(images).to.include.members([
         "/images/mars.png",
-        "/images/jupiter.jpeg"
+        "/images/jupiter.jpeg",
       ]);
     });
 
@@ -93,13 +93,13 @@ describe("Tier One: Campuses", () => {
         {
           id: 3,
           name: "Pluto Conservatory",
-          imageUrl: "/images/pluto.png"
+          imageUrl: "/images/pluto.png",
         },
         {
           id: 4,
           name: "Art Institute of Mercury",
-          imageUrl: "/images/mercury.png"
-        }
+          imageUrl: "/images/mercury.png",
+        },
       ];
       const wrapper = mount(
         <UnconnectedAllCampuses
@@ -113,10 +113,10 @@ describe("Tier One: Campuses", () => {
       expect(wrapper.text()).to.include("Art Institute of Mercury");
       // The test is expecting an image for each campus, with src set to the
       // campus's imageUrl
-      const images = wrapper.find("img").map(node => node.get(0).props.src);
+      const images = wrapper.find("img").map((node) => node.get(0).props.src);
       expect(images).to.include.members([
         "/images/pluto.png",
-        "/images/mercury.png"
+        "/images/mercury.png",
       ]);
     });
 
@@ -151,7 +151,7 @@ describe("Tier One: Campuses", () => {
       xit("setCampuses action creator returns a valid action", () => {
         expect(setCampuses(campuses)).to.deep.equal({
           type: "SET_CAMPUSES",
-          campuses
+          campuses,
         });
       });
 
@@ -223,7 +223,7 @@ describe("Tier One: Campuses", () => {
         wrapper.update();
 
         const { campuses: reduxCampuses } = store.getState();
-        reduxCampuses.forEach(reduxCampus => {
+        reduxCampuses.forEach((reduxCampus) => {
           expect(wrapper.text()).to.include(reduxCampus.name);
         });
       });
@@ -280,13 +280,13 @@ describe("Tier One: Campuses", () => {
         {
           id: 1,
           name: "Mars Academy",
-          imageUrl: "/images/mars.png"
+          imageUrl: "/images/mars.png",
         },
         {
           id: 2,
           name: "Jupiter Jumpstart",
-          imageUrl: "/images/jupiter.jpeg"
-        }
+          imageUrl: "/images/jupiter.jpeg",
+        },
       ]);
       expect(Campus.findAll.calledOnce).to.be.equal(true);
     });
@@ -302,7 +302,7 @@ describe("Tier One: Campuses", () => {
         address: "5.2 AU",
         imageUrl: "/images/jupiter.png",
         description:
-          "The best JavaScript Academy for toddlers in the solar system!"
+          "The best JavaScript Academy for toddlers in the solar system!",
       });
       expect(campus.name).to.equal("Jupiter Jumpstart");
       expect(campus.address).to.equal("5.2 AU");
@@ -332,7 +332,7 @@ describe("Tier One: Campuses", () => {
     xit("default imageUrl if left blank", async () => {
       const campus = Campus.build({
         name: "Jupiter Jumpstart",
-        address: "5.2 AU"
+        address: "5.2 AU",
       });
       await campus.validate();
       expect(campus.imageUrl).to.be.a("string");

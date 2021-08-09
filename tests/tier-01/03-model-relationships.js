@@ -12,19 +12,19 @@ describe("Tier One: Student >- Campus Association", () => {
     beforeEach(async () => {
       campus = await Campus.create({
         name: "Jupiter Jumpstart",
-        address: "5.2 AU"
+        address: "5.2 AU",
       });
       student1 = await Student.create({
         firstName: "Sally",
         lastName: "Ride",
         email: "sallyride@nasa.gov",
-        campusId: campus.id
+        campusId: campus.id,
       });
       student2 = await Student.create({
         firstName: "Mae",
         lastName: "Jemison",
         email: "maejemison@nasa.gov",
-        campusId: campus.id
+        campusId: campus.id,
       });
     });
     afterEach(() => db.sync({ force: true }));
@@ -50,15 +50,15 @@ describe("Tier One: Student >- Campus Association", () => {
 
     xit("creates at least one campus that has several students", () => {
       const campusesWithSeveralStudents = campuses
-        .filter(campus => campus.students.length > 1)
-        .map(campus => campus.name);
+        .filter((campus) => campus.students.length > 1)
+        .map((campus) => campus.name);
       expect(campusesWithSeveralStudents).to.have.lengthOf.above(0);
     });
 
     xit("creates at least one student that is not assigned to a campus", () => {
       const studentsWithNoCampus = students
-        .filter(student => !student.campus)
-        .map(student => student);
+        .filter((student) => !student.campus)
+        .map((student) => student);
       expect(studentsWithNoCampus).to.have.lengthOf.above(0);
     });
   });

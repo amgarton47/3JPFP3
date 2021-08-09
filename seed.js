@@ -21,7 +21,7 @@ if (require.main === module) {
       console.log(green("Seeding success!"));
       db.close();
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(red("Oh noes! Something went wrong!"));
       console.error(err);
       db.close();

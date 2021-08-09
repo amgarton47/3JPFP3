@@ -14,7 +14,7 @@ const { MemoryRouter } = rrd;
 const middlewares = [thunkMiddleware];
 const mockStore = configureMockStore(middlewares);
 const initialState = {
-  students: []
+  students: [],
 };
 
 import mockAxios from "../mock-axios";
@@ -34,7 +34,7 @@ const seed = require("../../seed");
 // UnconnectedAllStudents is a named export from that module, and it is NOT connected
 // to Redux. We're testing BOTH of these components in here.
 import AllStudents, {
-  AllStudents as UnconnectedAllStudents
+  AllStudents as UnconnectedAllStudents,
 } from "../../app/components/AllStudents";
 import AllCampuses from "../../app/components/AllCampuses";
 import Routes from "../../app/components/Routes";
@@ -45,13 +45,13 @@ describe("Tier One: Students", () => {
     {
       id: 1,
       firstName: "Mae",
-      lastName: "Jemison"
+      lastName: "Jemison",
     },
     {
       id: 2,
       firstName: "Sally",
-      lastName: "Ride"
-    }
+      lastName: "Ride",
+    },
   ];
   beforeEach(() => {
     // mockAxios ensures that when our client-side code requests data from the
@@ -83,13 +83,13 @@ describe("Tier One: Students", () => {
         {
           id: 3,
           firstName: "Mary",
-          lastName: "Shelley"
+          lastName: "Shelley",
         },
         {
           id: 4,
           firstName: "Ada",
-          lastName: "Lovelace"
-        }
+          lastName: "Lovelace",
+        },
       ];
       const wrapper = mount(
         <UnconnectedAllStudents
@@ -133,7 +133,7 @@ describe("Tier One: Students", () => {
       xit("setStudents action creator returns a valid action", () => {
         expect(setStudents(students)).to.deep.equal({
           type: "SET_STUDENTS",
-          students
+          students,
         });
       });
 
@@ -161,7 +161,7 @@ describe("Tier One: Students", () => {
       xit("reduces on SET_STUDENTS action", () => {
         const action = {
           type: "SET_STUDENTS",
-          students
+          students,
         };
 
         const prevState = testStore.getState();
@@ -208,7 +208,7 @@ describe("Tier One: Students", () => {
         wrapper.update();
 
         const { students: reduxStudents } = store.getState();
-        reduxStudents.forEach(reduxStudent => {
+        reduxStudents.forEach((reduxStudent) => {
           expect(wrapper.text()).to.include(reduxStudent.firstName);
         });
       });
@@ -271,7 +271,7 @@ describe("Tier One: Students", () => {
         lastName: "Ride",
         email: "sallyride@nasa.gov",
         imageUrl: "/images/sallyride.png",
-        gpa: 3.8
+        gpa: 3.8,
       });
       expect(student.firstName).to.equal("Sally");
       expect(student.lastName).to.equal("Ride");
@@ -298,7 +298,7 @@ describe("Tier One: Students", () => {
       const student = Student.build({
         firstName: "",
         lastName: "",
-        email: ""
+        email: "",
       });
       try {
         await student.validate();
@@ -321,7 +321,7 @@ describe("Tier One: Students", () => {
         firstName: "Sally",
         lastName: "Ride",
         email: "sallyride@nasa.gov",
-        gpa: 4.1
+        gpa: 4.1,
       };
       const overachiever = Student.build(student);
       try {
@@ -344,7 +344,7 @@ describe("Tier One: Students", () => {
       const student = Student.build({
         firstName: "",
         lastName: "",
-        email: ""
+        email: "",
       });
       expect(student.imageUrl).to.be.a("string");
       expect(student.imageUrl.length).to.be.greaterThan(1);
