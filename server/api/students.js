@@ -16,4 +16,10 @@ students.get("/:id", (req, res, next) => {
     .catch((err) => next(err));
 });
 
+students.post("/", (req, res, next) => {
+  Student.create(req.body)
+    .then((student) => res.student)
+    .catch((err) => next(err));
+});
+
 module.exports = students;

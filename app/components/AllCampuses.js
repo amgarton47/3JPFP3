@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchCampuses } from "../redux/campuses";
 import { Link } from "react-router-dom";
+import CreateCampusForm from "./CreateCampusForm";
 
 // Notice that we're exporting the AllCampuses component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -20,11 +21,18 @@ export class AllCampuses extends React.Component {
     return (
       <div>
         <h1>Campuses</h1>
-        {this.props.campuses.map((campus) => (
-          <Link to={`/campuses/${campus.id}`} key={campus.id}>
-            <b>{campus.name}</b>
-          </Link>
+        {this.props.campuses.map((campus, idx) => (
+          <div key={idx}>
+            <Link to={`/campuses/${campus.id}`}>
+              <b>{campus.name}</b>
+            </Link>
+            <br></br>
+          </div>
         ))}
+        <br></br>
+        <br></br>
+        <Link to="/campuses/add">Add a campus</Link>
+        {/* <CreateCampusForm></CreateCampusForm> */}
       </div>
     );
   }

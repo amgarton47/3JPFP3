@@ -16,4 +16,10 @@ campuses.get("/:id", (req, res, next) => {
     .catch((err) => next(err));
 });
 
+campuses.post("/", (req, res, next) => {
+  Campus.create(req.body)
+    .then((campus) => res.send(campus))
+    .catch((err) => next(err));
+});
+
 module.exports = campuses;
