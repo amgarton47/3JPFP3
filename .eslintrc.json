@@ -1,7 +1,0 @@
-{
-  "extends": "fullstack",
-  "root": true,
-  "rules": {
-    "quotes": 0
-  }
-}
