@@ -22,4 +22,13 @@ campuses.post("/", (req, res, next) => {
     .catch((err) => next(err));
 });
 
+campuses.delete("/:id", (req, res, next) => {
+  Campus.findByPk(req.params.id)
+    .then((campus) => {
+      res.send(campus);
+      campus.destroy();
+    })
+    .catch((err) => next(err));
+});
+
 module.exports = campuses;

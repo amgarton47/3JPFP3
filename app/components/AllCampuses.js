@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchCampuses } from "../redux/campuses";
+import { deleteCampusThunk, fetchCampuses } from "../redux/campuses";
 import { Link } from "react-router-dom";
 import CreateCampusForm from "./CreateCampusForm";
 
@@ -27,6 +27,14 @@ export class AllCampuses extends React.Component {
               <b>{campus.name}</b>
             </Link>
             <br></br>
+            <button
+              onClick={() => {
+                console.log(campus.id);
+                this.props.deleteCampus(campus.id);
+              }}
+            >
+              X
+            </button>
           </div>
         ))}
         <br></br>
@@ -42,6 +50,7 @@ const mapState = (state) => ({ campuses: state.campuses });
 
 const mapDispatch = (dispatch) => ({
   loadCampuses: () => dispatch(fetchCampuses()),
+  deleteCampus: (id) => dispatch(deleteCampusThunk(id)),
 });
 
 export default connect(mapState, mapDispatch)(AllCampuses);
