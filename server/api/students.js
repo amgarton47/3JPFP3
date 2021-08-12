@@ -22,4 +22,13 @@ students.post("/", (req, res, next) => {
     .catch((err) => next(err));
 });
 
+students.delete("/:id", async (req, res, next) => {
+  Student.findByPk(req.params.id)
+    .then((student) => {
+      student.destroy();
+      res.send(student);
+    })
+    .catch((err) => next(err));
+});
+
 module.exports = students;

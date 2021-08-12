@@ -29,7 +29,6 @@ export class AllCampuses extends React.Component {
             <br></br>
             <button
               onClick={() => {
-                console.log(campus.id);
                 this.props.deleteCampus(campus.id);
               }}
             >

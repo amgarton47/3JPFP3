@@ -4,7 +4,7 @@ const SET_CAMPUSES = "SET_CAMPUSES";
 const ADD_CAMPUS = "ADD_CAMPUS";
 const DELETE_CAMPUS = "DELETE_CAMPUS";
 
-export const setCampuses = (campuses) => ({
+const setCampuses = (campuses) => ({
   type: SET_CAMPUSES,
   campuses,
 });
@@ -14,7 +14,7 @@ export const addCampus = (campus) => ({
   campus,
 });
 
-export const deleteCampus = (id) => ({
+const deleteCampus = (id) => ({
   type: DELETE_CAMPUS,
   id,
 });
@@ -34,8 +34,10 @@ export const createCampus = (campusData) => async (dispatch) => {
 };
 
 export const deleteCampusThunk = (id) => async (dispatch) => {
-  console.log("here");
-  axios.delete(`/api/campuses/${id}`).then(() => dispatch(deleteCampus(id)));
+  axios
+    .delete(`/api/campuses/${id}`)
+    .then(() => dispatch(deleteCampus(id)))
+    .catch((err) => console.log(err));
 };
 
 // Take a look at app/redux/index.js to see where this reducer is
