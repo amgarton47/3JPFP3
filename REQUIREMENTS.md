@@ -132,7 +132,7 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 
 #### Frontend
 
-- [ ] Write a component to display a form updating _at least_ a campus's name and address
+- [o] Write a component to display a form updating _at least_ a campus's name and address
 - [ ] Display this component EITHER as part of the single-campus view, or as its own view
 - Submitting the form with valid data should:
   - [ ] Make an AJAX request that causes that campus to be updated in the database
